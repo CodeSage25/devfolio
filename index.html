@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Ndako Yannick</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png " rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet" />
+
+    <!-- =======================================================
+  * Template Name: DevFolio
+  * Template URL: https://bootstrapmade.com/devfolio-bootstrap-portfolio-html-template/
+  * Updated: Aug 07 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  </head>
+<script>
+  const form = document.getElementById("contact-form");
+  const loading = form.querySelector(".loading");
+  const errorMessage = form.querySelector(".error-message");
+  const sentMessage = form.querySelector(".sent-message");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    loading.style.display = "block";
+    errorMessage.style.display = "none";
+    sentMessage.style.display = "none";
+    errorMessage.textContent = "";
+
+    const fd = new FormData(form);
+    const payload = Object.fromEntries(fd.entries());
+
+    try {
+      const res = await fetch("/.netlify/functions/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const text = await res.text();
+
+      loading.style.display = "none";
+
+      if (res.ok && text.trim() === "OK") {
+        sentMessage.style.display = "block";
+        form.reset();
+      } else {
+        errorMessage.style.display = "block";
+        errorMessage.textContent = text || "Erreur. Réessayez.";
+      }
+    } catch (err) {
+      loading.style.display = "none";
+      errorMessage.style.display = "block";
+      errorMessage.textContent = "Impossible d'envoyer. Vérifiez votre connexion.";
+    }
+  });
+</script>
+  <body class="index-page">
+    <header id="header" class="header d-flex align-items-center sticky-top">
+      <div
+        class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between"
+      >
+        <a href="index.html" class="logo d-flex align-items-center">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <!-- <img src="assets/img/logo.png" alt=""> -->
+          <h1 class="sitename">Ndako Yannick &#9739;</h1>
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li>
+              <a href="#hero" class="active">Accueil<br /></a>
+            </li>
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Réalisations</a></li>
+            <li class="dropdown">
+              <a href="#"
+                ><span>Dropdown</span>
+                <i class="bi bi-chevron-down toggle-dropdown"></i
+              ></a>
+              <ul>
+                <li><a href="#">Dropdown 1</a></li>
+                <li class="dropdown">
+                  <a href="#"
+                    ><span>Deep Dropdown</span>
+                    <i class="bi bi-chevron-down toggle-dropdown"></i
+                  ></a>
+                  <ul>
+                    <li><a href="#">Deep Dropdown 1</a></li>
+                    <li><a href="#">Deep Dropdown 2</a></li>
+                    <li><a href="#">Deep Dropdown 3</a></li>
+                    <li><a href="#">Deep Dropdown 4</a></li>
+                    <li><a href="#">Deep Dropdown 5</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Dropdown 2</a></li>
+                <li><a href="#">Dropdown 3</a></li>
+                <li><a href="#">Dropdown 4</a></li>
+              </ul>
+            </li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Hero Section -->
+      <section id="hero" class="hero section dark-background">
+        <img src="assets/img/hero-img.jpg" alt="" data-aos="fade-in" />
+
+        <div
+          class="container d-flex flex-column align-items-center justify-content-center text-center"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <h2>Je suis Ndako Yannick Détéri</h2>
+          <p>
+            <span
+              class="typed"
+              data-typed-items="Développeur Frontend Web, Assistant en stratégie digitale, Freelancer, Gestionnaire de présence digitale, Chargé de projets digitaux (junior)"
+            ></span>
+          </p>
+        </div>
+      </section>
+      <!-- /Hero Section -->
+
+      <!-- About Section -->
+      <section id="about" class="about section">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+          <div class="row gy-4">
+            <div class="col-md-6">
+              <div class="row justify-content-between gy-4">
+                <div class="col-lg-5">
+                  <img src="assets/img/IMG_4373.jpg" class="img-fluid" alt="" />
+                </div>
+                <div class="col-lg-7 about-info">
+                  <p>
+                    <strong>Nom: </strong> <span>Ndako Yannick Détéri</span>
+                  </p>
+                  <p>
+                    <strong>Profil: </strong>
+                    <span>Developpeur Frontend Web & WebStrategist</span>
+                  </p>
+                  <p>
+                    <strong>Email: </strong> <span>yannickndako@gmail.com</span>
+                  </p>
+                  <p>
+                    <strong>Phone: </strong> <span>(+237) 690 973 861</span>
+                  </p>
+                </div>
+              </div>
+
+              <div class="skills-content skills-animation">
+                <h5>Skills</h5>
+
+                <div class="progress">
+                  <span class="skill"
+                    ><span>HTML</span> <i class="val">100%</i></span
+                  >
+                  <div class="progress-bar-wrap">
+                    <div
+                      class="progress-bar"
+                      role="progressbar"
+                      aria-valuenow="100"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </div>
+                <!-- End Skills Item -->
+
+                <div class="progress">
+                  <span class="skill"
+                    ><span>CSS</span> <i class="val">90%</i></span
+                  >
+                  <div class="progress-bar-wrap">
+                    <div
+                      class="progress-bar"
+                      role="progressbar"
+                      aria-valuenow="90"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </div>
+                <!-- End Skills Item -->
+
+                <div class="progress">
+                  <span class="skill"
+                    ><span>JavaScript</span> <i class="val">75%</i></span
+                  >
+                  <div class="progress-bar-wrap">
+                    <div
+                      class="progress-bar"
+                      role="progressbar"
+                      aria-valuenow="75"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </div>
+                <!-- End Skills Item -->
+
+                <div class="progress">
+                  <span class="skill"
+                    ><span>Git / GitHub</span> <i class="val">65%</i></span
+                  >
+                  <div class="progress-bar-wrap">
+                    <div
+                      class="progress-bar"
+                      role="progressbar"
+                      aria-valuenow="65"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </div>
+                <!-- End Skills Item -->
+
+                <div class="progress">
+                  <span class="skill"
+                    ><span>Responsive Design</span> <i class="val">85%</i></span
+                  >
+                  <div class="progress-bar-wrap">
+                    <div
+                      class="progress-bar"
+                      role="progressbar"
+                      aria-valuenow="85"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </div>
+                <!-- End Skills Item -->
+
+                <div class="progress">
+                  <span class="skill"
+                    ><span>SEO de base</span> <i class="val">80%</i></span
+                  >
+                  <div class="progress-bar-wrap">
+                    <div
+                      class="progress-bar"
+                      role="progressbar"
+                      aria-valuenow="80"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </div>
+                <!-- End Skills Item -->
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="about-me">
+                <h4>À propos de moi</h4>
+                <p>
+                  Je suis Développeur Frontend Web et Freelance, spécialisé dans
+                  la création de sites web professionnels pour entreprises,
+                  établissements scolaires, organisations et projets de toute
+                  taille. Fort de ma formation en Management et Stratégie
+                  Digitale et actuellement en Master en Intelligence
+                  Artificielle et Intelligence Économique, je combine
+                  compétences techniques et sens stratégique pour concevoir des
+                  sites modernes, efficaces et faciles à utiliser.
+                </p>
+                <p>
+                  Mon objectif est d’aider les clients à renforcer leur
+                  visibilité en ligne, améliorer leur communication et offrir
+                  une expérience digitale intuitive à leurs utilisateurs.
+                </p>
+                <p>
+                  Je maîtrise la création d’interfaces modernes et responsives,
+                  ainsi que l’optimisation de la présence digitale de mes
+                  clients grâce à une approche structurée et orientée résultats.
+                  Chaque projet que je réalise est pensé pour répondre aux
+                  besoins réels de mes clients tout en respectant les standards
+                  du web.
+                </p>
+                <p>
+                  Je maîtrise la création d’interfaces modernes et responsives,
+                  ainsi que l’optimisation de la présence digitale de mes
+                  clients grâce à une approche structurée et orientée résultats.
+                  Chaque projet que je réalise est pensé pour répondre aux
+                  besoins réels de mes clients tout en respectant les standards
+                  du web.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /About Section -->
+
+      <!-- Resume Section -->
+      <section id="resume" class="resume section">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Resume</h2>
+          <p>Bon à savoir.</p>
+        </div>
+        <!-- End Section Title -->
+
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+              <h3 class="resume-title">Résumé</h3>
+
+              <div class="resume-item pb-0">
+                <h4>Ndako Yannick</h4>
+                <p>
+                  <em>
+                    Développeur Frontend Web et Freelance, orienté résultats et
+                    solutions digitales. Titulaire d’une Licence en Management
+                    et Stratégie Digitale obtenue à Pigier et actuellement en
+                    Master en Intelligence Artificielle et Intelligence
+                    Économique, je conçois et développe des sites web modernes
+                    et responsives pour entreprises, écoles et projets de toute
+                    taille, en alliant technique, stratégie digitale et
+                    expérience utilisateur. Je suis passionné par la création
+                    d’interfaces efficaces, intuitives et esthétiques, et je
+                    m’engage à livrer des solutions personnalisées, fiables et
+                    professionnelles, du concept initial jusqu’à la mise en
+                    ligne.
+                  </em>
+                </p>
+                <ul>
+                  <li>Localisation : Maroua, Cameroun</li>
+                  <li>Téléphone : (+237) 690 973 861</li>
+                  <li>Email : ndakoyannick@example.com</li>
+                </ul>
+              </div>
+              <!-- Edn Resume Item -->
+
+              <h3 class="resume-title">Education</h3>
+              <div class="resume-item">
+                <h4>
+                  Master en Intelligence Artificielle et Intelligence Économique
+                  – Pigier, Cameroun
+                </h4>
+                <h5>2025 - en cours</h5>
+                <p>
+                  <em
+                    >Ce master me permet de développer mes compétences en
+                    analyse de données, automatisation et solutions digitales
+                    intelligentes, afin de proposer à mes clients des projets
+                    web innovants et optimisés pour leurs besoins
+                    stratégiques.</em
+                  >
+                </p>
+              </div>
+              <!-- Edn Resume Item -->
+
+              <div class="resume-item">
+                <h4>
+                  Licence en Management et Stratégie Digitale – Pigier, Maroua
+                </h4>
+                <h5>2022 - 2025</h5>
+                <p>
+                  <em
+                    >J’ai acquis des compétences solides en gestion de projets
+                    digitaux, marketing numérique et stratégie digitale, qui me
+                    permettent de combiner technique et stratégie dans la
+                    création de sites web modernes et performants.</em
+                  >
+                </p>
+              </div>
+              <!-- Edn Resume Item -->
+
+              <div class="resume-item">
+                <h4>Baccalauréat D – Collège Baba Simon, Tokombéré</h4>
+                <h5>2022</h5>
+                <p>
+                  <em
+                    >J’ai obtenu mon Baccalauréat D au Collège Baba Simon de
+                    Tokombéré, avec une solide base en sciences et en
+                    mathématiques, ce qui m’a permis de développer des
+                    compétences analytiques essentielles pour mon parcours en
+                    développement web et stratégie digitale.</em
+                  >
+                </p>
+              </div>
+              <!-- Edn Resume Item -->
+            </div>
+
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+              <h3 class="resume-title">Professional Experience</h3>
+              <div class="resume-item">
+                <h4>Développeur Frontend Web – Freelance</h4>
+                <h5>2023 – Présent</h5>
+
+                <ul>
+                  <li>
+                    Conception et développement de sites web modernes et
+                    responsives pour entreprises, écoles et projets de toute
+                    taille.
+                  </li>
+                  <li>
+                    Mise en œuvre de solutions digitales efficaces, intégrant
+                    HTML, CSS, JavaScript.
+                  </li>
+                  <li>
+                    Gestion complète des projets, du concept initial à la mise
+                    en ligne, avec un suivi personnalisé des besoins clients.
+                  </li>
+                  <li>
+                    Optimisation de la présence digitale et amélioration de
+                    l’expérience utilisateur sur chaque projet.
+                  </li>
+                  <li>
+                    Coordination avec clients et collaborateurs pour assurer le
+                    respect des délais et la qualité des livrables.
+                  </li>
+                </ul>
+              </div>
+              <!-- Edn Resume Item -->
+
+              <div class="resume-item">
+                <h4>
+                  Spécialiste en Stratégie Digitale et Communication IT –
+                  Freelance / Missions
+                </h4>
+
+                <ul>
+                  <li>
+                    Gestion simultanée de plusieurs projets digitaux tout en
+                    respectant les délais et les exigences stratégiques des
+                    clients.
+                  </li>
+                  <li>
+                    Création de prototypes, dashboards et présentations de
+                    projets pour validation client et planification stratégique.
+                  </li>
+                  <li>
+                    Analyse des performances des projets et recommandations pour
+                    améliorer l’expérience utilisateur et l’efficacité digitale.
+                  </li>
+                  <li>
+                    Conseil et accompagnement des clients sur la stratégie
+                    digitale et la communication en ligne, afin d’optimiser leur
+                    visibilité et leur impact.
+                  </li>
+                </ul>
+              </div>
+              <!-- Edn Resume Item -->
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /Resume Section -->
+
+      <!-- Services Section -->
+      <section id="services" class="services section">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Services</h2>
+          <p>
+            Allier design, performance et stratégie digitale pour créer des
+            sites web qui impactent réellement vos utilisateurs.
+          </p>
+        </div>
+        <!-- End Section Title -->
+
+        <div class="container">
+          <div class="row gy-4">
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-activity"></i>
+                </div>
+
+                <h3>Développement Frontend Web</h3>
+
+                <p>
+                  Conception et création de sites web modernes et responsives,
+                  optimisés pour tous les types d’écrans et appareils, avec un
+                  design intuitif et professionnel.
+                </p>
+              </div>
+            </div>
+            <!-- End Service Item -->
+
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-broadcast"></i>
+                </div>
+
+                <h3>Stratégie Digitale</h3>
+
+                <p>
+                  Accompagnement des clients dans la planification et
+                  l’optimisation de leur présence en ligne, afin d’améliorer la
+                  visibilité, la communication et l’impact de leurs projets
+                  digitaux.
+                </p>
+              </div>
+            </div>
+            <!-- End Service Item -->
+
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-easel"></i>
+                </div>
+
+                <h3>Gestion de projets digitaux</h3>
+
+                <p>
+                  Organisation et suivi de projets web de A à Z, coordination
+                  avec les clients et collaborateurs, et respect des délais et
+                  budgets.
+                </p>
+              </div>
+            </div>
+            <!-- End Service Item -->
+
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-bounding-box-circles"></i>
+                </div>
+
+                <h3>Optimisation de l’expérience utilisateur (UX)</h3>
+
+                <p>
+                  Création d’interfaces ergonomiques et intuitives pour
+                  améliorer la navigation et la satisfaction des utilisateurs
+                  sur les sites web.
+                </p>
+              </div>
+            </div>
+            <!-- End Service Item -->
+
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="500"
+            >
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-calendar4-week"></i>
+                </div>
+
+                <h3>Maintenance et mises à jour de sites web</h3>
+
+                <p>
+                  Suivi régulier des sites web, mise à jour des contenus et
+                  fonctionnalités, afin de garantir performance et sécurité.
+                </p>
+              </div>
+            </div>
+            <!-- End Service Item -->
+
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="600"
+            >
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-chat-square-text"></i>
+                </div>
+
+                <h3>SEO et visibilité digitale</h3>
+
+                <p>
+                  Optimisation des sites pour les moteurs de recherche, afin de
+                  maximiser le trafic et la présence en ligne des clients
+                </p>
+              </div>
+            </div>
+            <!-- End Service Item -->
+          </div>
+        </div>
+      </section>
+      <!-- /Services Section -->
+
+      <!-- Stats Section -->
+      <section id="stats" class="stats section accent-background">
+        <img src="assets/img/stats-bg.jpg" alt="" data-aos="fade-in" />
+
+        <div
+          class="container position-relative"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <div class="row gy-4">
+            <div class="col-lg-3 col-md-6">
+              <div class="stats-item text-center w-100 h-100">
+                <span
+                  data-purecounter-start="0"
+                  data-purecounter-end="200+"
+                  data-purecounter-duration="0"
+                  class="purecounter"
+                  >200+</span
+                >
+                <p>Clients</p>
+              </div>
+            </div>
+            <!-- End Stats Item -->
+
+            <div class="col-lg-3 col-md-6">
+              <div class="stats-item text-center w-100 h-100">
+                <span
+                  data-purecounter-start="0"
+                  data-purecounter-end="85"
+                  data-purecounter-duration="0"
+                  class="purecounter"
+                  >50+</span
+                >
+                <p>Projets réalisés</p>
+              </div>
+            </div>
+            <!-- End Stats Item -->
+            <div class="col-lg-3 col-md-6">
+              <div class="stats-item text-center w-100 h-100">
+                <span
+                  data-purecounter-start="0"
+                  data-purecounter-end="42"
+                  data-purecounter-duration="0"
+                  class="purecounter"
+                  >85+</span
+                >
+                <p>Projets personnels</p>
+              </div>
+            </div>
+            <!-- End Stats Item -->
+
+            <div class="col-lg-3 col-md-6">
+              <div class="stats-item text-center w-100 h-100">
+                <span
+                  data-purecounter-start="0"
+                  data-purecounter-end="12"
+                  data-purecounter-duration="0"
+                  class="purecounter"
+                  >65+</span
+                >
+                <p>Awards</p>
+              </div>
+            </div>
+            <!-- End Stats Item -->
+          </div>
+        </div>
+      </section>
+      <!-- /Stats Section -->
+
+      <!-- Portfolio Section -->
+      <section id="portfolio" class="portfolio section">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Portfolio</h2>
+          <p>Quelques-uns de mes derniers travaux</p>
+        </div>
+        <!-- End Section Title -->
+
+        <div class="container">
+          <div
+            class="isotope-layout"
+            data-default-filter="*"
+            data-layout="masonry"
+            data-sort="original-order"
+          >
+            <ul
+              class="portfolio-filters isotope-filters"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-vitrine">Vitrine</li>
+              <li data-filter=".filter-product">Product</li>
+              <li data-filter=".filter-branding">Branding</li>
+            </ul>
+            <!-- End Portfolio Filters -->
+
+            <div
+              class="row gy-4 isotope-container"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div
+                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product"
+              >
+                <img
+                  src="assets/img/portfolio/img-flobbyBird.webp"
+                  class="img-fluid"
+                  alt=""
+                />
+                <div class="portfolio-info">
+                  <h4>Flappy-Bird</h4>
+                  <p>
+                    Jeu mobile addictif : contrôlez un oiseau en tapotant
+                    l'écran pour éviter les tuyaux. Chaque collision met fin à
+                    la partie. Simple à jouer, difficile à maîtriser ! 🐦
+                  </p>
+                  <a
+                    href="assets/img/portfolio/img-flobbyBird.webp"
+                    title="Flappy-Bird"
+                    data-gallery="portfolio-gallery-product"
+                    class="glightbox preview-link"
+                    ><i class="bi bi-zoom-in"></i
+                  ></a>
+                  <a
+                    href="https://codesage25.github.io/flabby-bird/"
+                    title="More Details"
+                    class="details-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><i class="bi bi-link-45deg"></i
+                  ></a>
+                </div>
+              </div>
+              <!-- End Portfolio Item -->
+
+              <div
+                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding"
+              >
+                <img
+                  src="assets/img/portfolio/img-generateurBulle.webp"
+                  class="img-fluid"
+                  alt=""
+                />
+                <div class="portfolio-info">
+                  <h4>Générateur de bulles</h4>
+                  <p>
+                    Expérience interactive de type « bubble pop » : bulles
+                    colorées dynamiques à éclater par tap ou glissement. Effets
+                    visuels et sonores soignés pour une sensation ASMR et une
+                    forte rétention utilisateur.
+                  </p>
+                  <a
+                    href="assets/img/portfolio/img-generateurBulle.webp"
+                    title="Générateur de bulles"
+                    data-gallery="portfolio-gallery-branding"
+                    class="glightbox preview-link"
+                    ><i class="bi bi-zoom-in"></i
+                  ></a>
+                  <a
+                    href="https://codesage25.github.io/generateur-de-bulle/"
+                    title="More Details"
+                    class="details-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><i class="bi bi-link-45deg"></i
+                  ></a>
+                </div>
+              </div>
+              <!-- End Portfolio Item -->
+
+              <div
+                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-vitrine"
+              >
+                <img
+                  src="assets/img/portfolio/img-pigiercam.webp"
+                  class="img-fluid"
+                  alt=""
+                />
+                <div class="portfolio-info">
+                  <h4>
+                    Pigier Cameroun 2.0 : Le futur de la formation pro est
+                    arrivé !
+                  </h4>
+                  <p>
+                    Refonte complète du site : design moderne, navigation fluide
+                    et inscription simplifiée. Formations en commerce,
+                    management et finance au Cameroun.
+                  </p>
+                  <a
+                    href="assets/img/portfolio/img-pigiercam.webp"
+                    title="Pigier Cameroun 2.0 "
+                    data-gallery="portfolio-gallery-vitrine"
+                    class="glightbox preview-link"
+                    ><i class="bi bi-zoom-in"></i
+                  ></a>
+                  <a
+                    href="https://codesage25.github.io/Site-pigier/"
+                    title="More Details"
+                    class="details-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><i class="bi bi-link-45deg"></i
+                  ></a>
+                </div>
+              </div>
+              <!-- End Portfolio Item -->
+
+              <div
+                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product"
+              >
+                <img
+                  src="assets/img/portfolio/img-quizz.webp"
+                  class="img-fluid"
+                  alt=""
+                />
+                <div class="portfolio-info">
+                  <h4>Application Quizz</h4>
+                  <p>
+                    Quiz mobile multi-thèmes avec scoring temps réel, streaks et
+                    classements. Interface fluide et système d'engagement
+                    optimisé.
+                  </p>
+                  <a
+                    href="assets/img/portfolio/img-quizz.webp"
+                    title="Quizz"
+                    data-gallery="portfolio-gallery-product"
+                    class="glightbox preview-link"
+                    ><i class="bi bi-zoom-in"></i
+                  ></a>
+                  <a
+                    href="https://codesage25.github.io/quizz-app/"
+                    title="More Details"
+                    class="details-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><i class="bi bi-link-45deg"></i
+                  ></a>
+                </div>
+              </div>
+              <!-- End Portfolio Item -->
+
+              <div
+                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product"
+              >
+                <img
+                  src="assets/img/portfolio/img-userapp.webp"
+                  class="img-fluid"
+                  alt=""
+                />
+                <div class="portfolio-info">
+                  <h4>UserApp – Gestion de profil utilisateur</h4>
+                  <p>
+                    Gestion complète du compte utilisateur avec profil,
+                    paramètres, historique et authentification sécurisée. Design
+                    moderne et responsive.
+                  </p>
+                  <a
+                    href="assets/img/portfolio/img-userapp.webp"
+                    title="userApp"
+                    data-gallery="portfolio-gallery-app"
+                    class="glightbox preview-link"
+                    ><i class="bi bi-zoom-in"></i
+                  ></a>
+                  <a
+                    href="https://codesage25.github.io/user-app/"
+                    title="More Details"
+                    class="details-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><i class="bi bi-link-45deg"></i
+                  ></a>
+                </div>
+              </div>
+              <!-- End Portfolio Item -->
+
+              <div
+                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product"
+              >
+                <img
+                  src="assets/img/portfolio/img-yoga.webp"
+                  class="img-fluid"
+                  alt=""
+                />
+                <div class="portfolio-info">
+                  <h4>Application Yoga</h4>
+                  <p>
+                    Application yoga : programmes par niveaux, tutoriels vidéo,
+                    suivi des progrès et modes relaxation/méditation. Design
+                    épuré et intuitif.
+                  </p>
+                  <a
+                    href="assets/img/portfolio/img-yoga.webp"
+                    title="app-Yoga"
+                    data-gallery="portfolio-gallery-product"
+                    class="glightbox preview-link"
+                    ><i class="bi bi-zoom-in"></i
+                  ></a>
+                  <a
+                    href="https://codesage25.github.io/yoga-routine/"
+                    title="More Details"
+                    class="details-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><i class="bi bi-link-45deg"></i
+                  ></a>
+                </div>
+              </div>
+              <!-- End Portfolio Item -->
+
+              <div
+                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-vitrine"
+              >
+                <img
+                  src="assets/img/portfolio/resto.webp"
+                  class="img-fluid"
+                  alt=""
+                />
+                <div class="portfolio-info">
+                  <h4>Maquette Site Restaurant</h4>
+                  <p>
+                    Maquette responsive élégante : carte et plats en galerie HD,
+                    réservation en ligne, présentation
+                    équipe/horaires/coordonnées. Navigation intuitive,
+                    optimisation mobile et identité visuelle culinaire forte.
+                  </p>
+                  <a
+                    href="assets/img/portfolio/resto.webp"
+                    title="The Resto"
+                    data-gallery="portfolio-gallery-vitrine"
+                    class="glightbox preview-link"
+                    ><i class="bi bi-zoom-in"></i
+                  ></a>
+                  <a
+                    href="https://codesage25.github.io/The-resto/"
+                    title="More Details"
+                    class="details-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><i class="bi bi-link-45deg"></i
+                  ></a>
+                </div>
+              </div>
+              <!-- End Portfolio Item -->
+
+              <div
+                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product"
+              >
+                <img
+                  src="assets/img/portfolio/imgappJoke.webp"
+                  class="img-fluid"
+                  alt=""
+                />
+                <div class="portfolio-info">
+                  <h4>Application Joke</h4>
+                  <p>
+                    Blagues quotidiennes par catégories (humour, dad jokes,
+                    one-liners...) avec favoris, partage social et mode sombre.
+                    Interface minimaliste et engageante.
+                  </p>
+                  <a
+                    href="assets/img/portfolio/imgappJoke.webp"
+                    title="appJoke"
+                    data-gallery="portfolio-gallery-product"
+                    class="glightbox preview-link"
+                    ><i class="bi bi-zoom-in"></i
+                  ></a>
+                  <a
+                    href="https://codesage25.github.io/appJoke/"
+                    title="More Details"
+                    class="details-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><i class="bi bi-link-45deg"></i
+                  ></a>
+                </div>
+              </div>
+              <!-- End Portfolio Item -->
+
+              <div
+                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product"
+              >
+                <img
+                  src="assets/img/portfolio/imgCountryapp.webp"
+                  class="img-fluid"
+                  alt=""
+                />
+                <div class="portfolio-info">
+                  <h4>CountryApp</h4>
+                  <p>
+                    Exploration mondiale : informations complètes sur les pays,
+                    cartes interactives, mode quiz et système de favoris.
+                    Interface responsive et intuitive.
+                  </p>
+                  <a
+                    href="assets/img/portfolio/imgCountryapp.webp"
+                    title="CountryApp"
+                    data-gallery="portfolio-gallery-product"
+                    class="glightbox preview-link"
+                    ><i class="bi bi-zoom-in"></i
+                  ></a>
+                  <a
+                    href="https://codesage25.github.io/country-app/"
+                    title="More Details"
+                    class="details-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><i class="bi bi-link-45deg"></i
+                  ></a>
+                </div>
+              </div>
+              <!-- End Portfolio Item -->
+
+              <div
+                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product"
+              >
+                <img
+                  src="assets/img/portfolio/imgMeal.webp"
+                  class="img-fluid"
+                  alt=""
+                />
+                <div class="portfolio-info">
+                  <h4>App Meal</h4>
+                  <p>
+                    Planification de repas hebdomadaire avec suivi calorique,
+                    base de recettes, listes de courses automatiques et suivi
+                    des progrès. Design appétissant et intuitif.
+                  </p>
+                  <a
+                    href="assets/img/portfolio/imgMeal.webp"
+                    title="AppMeal"
+                    data-gallery="portfolio-gallery-product"
+                    class="glightbox preview-link"
+                    ><i class="bi bi-zoom-in"></i
+                  ></a>
+                  <a
+                    href="https://codesage25.github.io/mealApp/"
+                    title="More Details"
+                    class="details-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><i class="bi bi-link-45deg"></i
+                  ></a>
+                </div>
+              </div>
+              <!-- End Portfolio Item -->
+
+              <div
+                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-vitrine"
+              >
+                <img
+                  src="assets/img/portfolio/imgVinci.webp"
+                  class="img-fluid"
+                  alt=""
+                />
+                <div class="portfolio-info">
+                  <h4>Maquette Site Vinci</h4>
+                  <p>
+                    Site corporate VINCI avec design élégant, mise en valeur des
+                    activités et projets d'infrastructure, actualités et RSE.
+                    Interface responsive et visuels impactants.
+                  </p>
+                  <a
+                    href="assets/img/portfolio/imgVinci.webp"
+                    title="Vinci"
+                    data-gallery="portfolio-gallery-vitrine"
+                    class="glightbox preview-link"
+                    ><i class="bi bi-zoom-in"></i
+                  ></a>
+                  <a
+                    href="https://codesage25.github.io/Maquette-site-VINCI-Construction-France/"
+                    title="More Details"
+                    class="details-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><i class="bi bi-link-45deg"></i
+                  ></a>
+                </div>
+              </div>
+              <!-- End Portfolio Item -->
+
+              <div
+                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product"
+              >
+                <img
+                  src="assets/img/portfolio/react-movies.webp"
+                  class="img-fluid"
+                  alt=""
+                />
+                <div class="portfolio-info">
+                  <h4>React Movies</h4>
+                  <p>
+                    Recherche de films/séries en React (API TMDB) avec fiches
+                    complètes, favoris, filtres avancés et design moderne.
+                    Hooks, composants réutilisables et responsive.
+                  </p>
+                  <a
+                    href="assets/img/portfolio/react-movies.webp"
+                    title="React Movies"
+                    data-gallery="portfolio-gallery-book"
+                    class="glightbox preview-link"
+                    ><i class="bi bi-zoom-in"></i
+                  ></a>
+                  <a
+                    href=" https://codesage25.github.io/react-movies/"
+                    title="More Details"
+                    class="details-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><i class="bi bi-link-45deg"></i
+                  ></a>
+                </div>
+              </div>
+              <!-- End Portfolio Item -->
+            </div>
+            <!-- End Portfolio Container -->
+          </div>
+        </div>
+      </section>
+      <!-- /Portfolio Section -->
+
+      <!-- Pricing Section -->
+      <section id="pricing" class="pricing section">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Prestations</h2>
+          <p>
+            Développement front-end, sites vitrines, applications web et
+            UI/branding. Tarifs indicatifs — ajustés selon le périmètre du
+            projet.
+          </p>
+        </div>
+        <!-- End Section Title -->
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+          <div class="row gy-4 gx-lg-5">
+            <div class="col-lg-6">
+              <div
+                class="pricing-item d-flex justify-content-between align-items-center"
+              >
+                <div>
+                  <h3>Landing page (conversion)</h3>
+                  <small class="text-muted"
+                    >Hero + sections, CTA, responsive, optimisation de
+                    base</small
+                  >
+                </div>
+                <h4>
+                  à partir de 250€
+                  <small class="text-muted">(≈ 164&nbsp;000 FCFA)</small>
+                </h4>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div
+                class="pricing-item d-flex justify-content-between align-items-center"
+              >
+                <div>
+                  <h3>Site vitrine (1 à 5 pages)</h3>
+                  <small class="text-muted"
+                    >Responsive, SEO de base, formulaire de contact</small
+                  >
+                </div>
+                <h4>
+                  à partir de 550€
+                  <small class="text-muted">(≈ 361&nbsp;000 FCFA)</small>
+                </h4>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div
+                class="pricing-item d-flex justify-content-between align-items-center"
+              >
+                <div>
+                  <h3>Intégration UI (Figma → Front)</h3>
+                  <small class="text-muted"
+                    >Intégration responsive, pixel perfect, accessibilité de
+                    base</small
+                  >
+                </div>
+                <h4>
+                  à partir de 90€
+                  <small class="text-muted">(≈ 59&nbsp;000 FCFA)</small>
+                </h4>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div
+                class="pricing-item d-flex justify-content-between align-items-center"
+              >
+                <div>
+                  <h3>Application web front-end (MVP)</h3>
+                  <small class="text-muted"
+                    >React/Vue, API, auth, dashboard (selon
+                    fonctionnalités)</small
+                  >
+                </div>
+                <h4>
+                  sur devis
+                  <small class="text-muted"
+                    >(dès 1&nbsp;500€ ≈ 984&nbsp;000 FCFA)</small
+                  >
+                </h4>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div
+                class="pricing-item d-flex justify-content-between align-items-center"
+              >
+                <div>
+                  <h3>Branding & UI Kit</h3>
+                  <small class="text-muted"
+                    >Mini charte, palette, typos, composants UI</small
+                  >
+                </div>
+                <h4>
+                  à partir de 450€
+                  <small class="text-muted">(≈ 295&nbsp;000 FCFA)</small>
+                </h4>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div
+                class="pricing-item d-flex justify-content-between align-items-center"
+              >
+                <div>
+                  <h3>Maintenance & améliorations</h3>
+                  <small class="text-muted"
+                    >Mises à jour, corrections, optimisations</small
+                  >
+                </div>
+                <h4>
+                  à partir de 75€/mois
+                  <small class="text-muted">(≈ 49&nbsp;000 FCFA)</small>
+                </h4>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <p class="text-muted mt-2 mb-0" style="font-size: 0.9rem">
+                Conversion indicative (1€ ≈ 656 FCFA). Facturation au taux du
+                jour.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /Pricing Section -->
+
+      <!-- Faq Section -->
+      <section id="faq" class="faq section">
+        <div class="container">
+          <div class="row gy-4">
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+              <div class="content px-xl-5">
+                <h3><span>Questions </span><strong>fréquentes</strong></h3>
+                <p>
+                  Voici les réponses aux questions que les clients se posent le
+                  plus avant de démarrer un projet (délais, prix, contenu,
+                  paiement, suivi…). Mon objectif : vous rassurer et cadrer le
+                  projet dès le début.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+              <div class="faq-container">
+                <div class="faq-item faq-active">
+                  <h3>
+                    <span class="num">1.</span>
+                    <span>Comment se déroule un projet, étape par étape ?</span>
+                  </h3>
+                  <div class="faq-content">
+                    <p>
+                      1) Échange rapide (besoin, objectifs, cible) • 2) Devis +
+                      planning • 3) Maquette/structure (si besoin) • 4)
+                      Développement & retours • 5) Mise en ligne + tests • 6)
+                      Support après livraison. Vous suivez l’avancement et
+                      validez à chaque étape clé.
+                    </p>
+                  </div>
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </div>
+
+                <div class="faq-item">
+                  <h3>
+                    <span class="num">2.</span>
+                    <span>Combien de temps faut-il pour livrer ?</span>
+                  </h3>
+                  <div class="faq-content">
+                    <p>
+                      En moyenne : Landing page (3–7 jours), site vitrine (1–3
+                      semaines), application (selon fonctionnalités : 3–8+
+                      semaines). Le délai dépend surtout du contenu disponible
+                      (textes, images) et du nombre de retours.
+                    </p>
+                  </div>
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </div>
+
+                <div class="faq-item">
+                  <h3>
+                    <span class="num">3.</span>
+                    <span
+                      >Qu’est-ce qui est inclus dans le prix “à partir de”
+                      ?</span
+                    >
+                  </h3>
+                  <div class="faq-content">
+                    <p>
+                      Responsive (mobile/tablette/desktop), intégration propre,
+                      optimisation de base (performance + SEO technique),
+                      formulaire/contact, mise en ligne, et 1 à 2 séries de
+                      corrections mineures après livraison. Les demandes hors
+                      périmètre sont chiffrées avant réalisation.
+                    </p>
+                  </div>
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </div>
+
+                <div class="faq-item">
+                  <h3>
+                    <span class="num">4.</span>
+                    <span>De quoi avez-vous besoin pour commencer ?</span>
+                  </h3>
+                  <div class="faq-content">
+                    <p>
+                      Idéalement : votre logo (si existant), vos
+                      couleurs/références, textes, images, liens réseaux
+                      sociaux, exemples de sites que vous aimez, et votre
+                      objectif (vendre, présenter, obtenir des contacts…). Si
+                      vous n’avez pas tout, je peux vous guider.
+                    </p>
+                  </div>
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </div>
+
+                <div class="faq-item">
+                  <h3>
+                    <span class="num">5.</span>
+                    <span
+                      >Est-ce que vous vous occupez du domaine et de
+                      l’hébergement ?</span
+                    >
+                  </h3>
+                  <div class="faq-content">
+                    <p>
+                      Oui, au choix : soit vous utilisez vos comptes (je vous
+                      accompagne), soit je m’en charge. Le domaine (.com) et
+                      l’hébergement sont généralement facturés séparément (coûts
+                      annuels). Je propose aussi la mise en place de mails pro
+                      (ex: contact@votredomaine.com).
+                    </p>
+                  </div>
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </div>
+
+                <div class="faq-item">
+                  <h3>
+                    <span class="num">6.</span>
+                    <span>Comment se passe le paiement ?</span>
+                  </h3>
+                  <div class="faq-content">
+                    <p>
+                      En général : 50% d’acompte pour démarrer, 50% à la
+                      livraison (ou par étapes sur gros projet). Paiement
+                      possible via Mobile Money / virement (selon ce qui vous
+                      arrange). Une facture ou reçu peut être fourni.
+                    </p>
+                  </div>
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </div>
+
+                <div class="faq-item">
+                  <h3>
+                    <span class="num">7.</span>
+                    <span
+                      >Et si je veux modifier/ajouter des fonctionnalités plus
+                      tard ?</span
+                    >
+                  </h3>
+                  <div class="faq-content">
+                    <p>
+                      Aucun problème. Je peux intervenir en amélioration
+                      continue (forfait maintenance) ou sur demande (devis
+                      ponctuel). L’objectif est de garder un site évolutif et
+                      facile à faire grandir.
+                    </p>
+                  </div>
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </div>
+
+                <div class="faq-item">
+                  <h3>
+                    <span class="num">8.</span>
+                    <span
+                      >Proposez-vous un support après la mise en ligne ?</span
+                    >
+                  </h3>
+                  <div class="faq-content">
+                    <p>
+                      Oui. Après livraison, je reste disponible pour corriger
+                      d’éventuels bugs et vous accompagner. Ensuite, vous pouvez
+                      prendre un forfait maintenance (mises à jour, sécurité,
+                      optimisations) ou demander des interventions ponctuelles.
+                    </p>
+                  </div>
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /Faq Section -->
+
+      <!-- Testimonials Section -->
+      <section id="testimonials" class="testimonials section accent-background">
+        <img
+          src="assets/img/testimonials-bg.jpg"
+          class="testimonials-bg"
+          alt="Fond de la section"
+        />
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Notre équipe</h2>
+          <p>
+            Une petite équipe, deux compétences complémentaires : développement
+            front-end et design graphique. Objectif : livrer des sites et
+            interfaces modernes, rapides et cohérentes avec votre image.
+          </p>
+        </div>
+        <!-- End Section Title -->
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper init-swiper">
+            <script type="application/json" class="swiper-config">
+              {
+                "loop": true,
+                "speed": 600,
+                "autoplay": { "delay": 5000 },
+                "slidesPerView": "auto",
+                "pagination": {
+                  "el": ".swiper-pagination",
+                  "type": "bullets",
+                  "clickable": true
+                }
+              }
+            </script>
+
+            <div class="swiper-wrapper">
+              <!-- Ndako Yannick Détéri -->
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <img
+                    src="assets/img/testimonials/img-ndako.webp"
+                    class="testimonial-img"
+                    alt="Ndako Yannick Détéri"
+                  />
+                  <h3>Ndako Yannick Détéri</h3>
+                  <h4>
+                    <h4>
+                      Fondateur • Développeur Front‑end Freelance • Master IA &
+                      Intelligence Économique
+                    </h4>
+                  </h4>
+
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    <span>
+                      Je conçois et développe des interfaces web modernes (sites
+                      vitrines, landing pages, dashboards) avec un focus sur le
+                      responsive, la performance et l’expérience utilisateur. Je
+                      privilégie une communication claire, des délais maîtrisés
+                      et un rendu professionnel.
+                    </span>
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+              <!-- End item -->
+
+              <!-- Songué Jourdain / VeloxMaker -->
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <img
+                    src="assets/img/team/jourdain-veloxmaker.jpg"
+                    class="testimonial-img"
+                    alt="Songué Jourdain (VeloxMaker)"
+                  />
+                  <h3>
+                    Songué Jourdain
+                    <small class="text-muted">(VeloxMaker)</small>
+                  </h3>
+                  <h4>Graphiste • UI/Branding</h4>
+
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    <span>
+                      Je crée des identités visuelles solides (logo, couleurs,
+                      typographies) et des visuels cohérents pour vos supports.
+                      L’objectif : une image de marque claire et des interfaces
+                      attractives, prêtes à être intégrées proprement côté web.
+                    </span>
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+              <!-- End item -->
+
+              <!-- Optionnel : slide "collaboration" -->
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <img
+                    src="assets/img/team/collaboration.jpg"
+                    class="testimonial-img"
+                    alt="Collaboration"
+                  />
+                  <h3>Un projet plus ambitieux ?</h3>
+                  <h4>Réseau de partenaires (si nécessaire)</h4>
+
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    <span>
+                      Selon les besoins (backend, contenu, marketing), nous
+                      pouvons nous entourer de partenaires de confiance. Vous
+                      gardez un interlocuteur principal et un suivi simple du
+                      début à la mise en ligne.
+                    </span>
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+              <!-- End item -->
+            </div>
+
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </section>
+      <!-- /Testimonials Section -->
+
+      <!-- Contact Section -->
+      <section id="contact" class="contact section">
+        <!-- Section Title -->
+       <div class="container section-title" data-aos="fade-up">
+  <h2>Contact</h2>
+  <p>
+    Vous avez un projet (site vitrine, landing page, application web, branding) ?
+    Contactez-nous et nous vous répondrons rapidement avec une estimation et les prochaines étapes.
+  </p>
+</div>
+
+<div class="container" data-aos="fade-up" data-aos-delay="100">
+  <div class="info-wrap" data-aos="fade-up" data-aos-delay="200">
+    <div class="row gy-5">
+
+      <div class="col-lg-4">
+        <div class="info-item d-flex align-items-center">
+          <i class="bi bi-geo-alt flex-shrink-0"></i>
+          <div>
+            <h3>Localisation</h3>
+            <p>Cameroun</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="info-item d-flex align-items-center">
+          <i class="bi bi-telephone flex-shrink-0"></i>
+          <div>
+            <h3>Téléphone / WhatsApp</h3>
+            <p>
+              <a href="tel:+237690973861">+237 690 973 861</a><br />
+              <a href="https://wa.me/237690973861" target="_blank" rel="noopener">
+                Écrire sur WhatsApp
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="info-item d-flex align-items-center">
+          <i class="bi bi-envelope flex-shrink-0"></i>
+          <div>
+            <h3>Email</h3>
+            <p>
+              <a href="mailto:contact@veloxwebstudio.com">contact@ndakoyannick.com</a><br />
+              <small class="text-muted">
+                Alternative : <a href="mailto:yannickndako@gmail.com">yannickndako@gmail.com</a>
+              </small>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+         <form id="contact-form" data-aos="fade-up" data-aos-delay="300">
+  <div class="row gy-4">
+    <div class="col-md-6">
+      <input type="text" name="name" class="form-control" placeholder="Votre nom" required />
+    </div>
+
+    <div class="col-md-6">
+      <input type="email" name="email" class="form-control" placeholder="Votre email" required />
+    </div>
+
+    <!-- Anti-spam (doit rester vide) -->
+    <div style="display:none;">
+      <input type="text" name="website" value="" autocomplete="off" tabindex="-1" />
+    </div>
+
+    <div class="col-md-12">
+      <input type="text" name="subject" class="form-control" placeholder="Objet" required />
+    </div>
+
+    <div class="col-md-12">
+      <textarea name="message" class="form-control" rows="6" placeholder="Votre message" required></textarea>
+    </div>
+
+    <div class="col-md-12 text-center">
+      <div class="loading" style="display:none;">Envoi...</div>
+      <div class="error-message" style="display:none;"></div>
+      <div class="sent-message" style="display:none;">Message envoyé. Merci !</div>
+
+      <button type="submit">Envoyer</button>
+    </div>
+  </div>
+</form>
+          <!-- End Contact Form -->
+        </div>
+      </section>
+      <!-- /Contact Section -->
+    </main>
+
+    <footer id="footer" class="footer accent-background">
+  <div class="container">
+
+    <div class="copyright text-center">
+      <p class="mb-1">
+        © <span id="year"></span>
+        <strong class="px-1 sitename">Velox Web Studio</strong>
+        <span>— Tous droits réservés</span>
+      </p>
+      <p class="mb-0" style="font-size: 0.95rem;">
+        Ndako Yannick Détéri (Développeur Front‑end) • Songué Jourdain <span class="text-muted">(VeloxMaker)</span> (Graphiste)
+      </p>
+    </div>
+
+    <div class="social-links d-flex justify-content-center mt-3">
+      <!-- Remplace les href par tes liens -->
+      <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
+      <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+      <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+    </div>
+
+    
+
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</footer>
+
+    <!-- Scroll Top -->
+    <a
+      href="#"
+      id="scroll-top"
+      class="scroll-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/typed.js/typed.umd.js"></script>
+    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
