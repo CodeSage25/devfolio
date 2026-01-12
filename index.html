@@ -46,48 +46,49 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
   </head>
-<script>
-  const form = document.getElementById("contact-form");
-  const loading = form.querySelector(".loading");
-  const errorMessage = form.querySelector(".error-message");
-  const sentMessage = form.querySelector(".sent-message");
+  <script>
+    const form = document.getElementById("contact-form");
+    const loading = form.querySelector(".loading");
+    const errorMessage = form.querySelector(".error-message");
+    const sentMessage = form.querySelector(".sent-message");
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-    loading.style.display = "block";
-    errorMessage.style.display = "none";
-    sentMessage.style.display = "none";
-    errorMessage.textContent = "";
+      loading.style.display = "block";
+      errorMessage.style.display = "none";
+      sentMessage.style.display = "none";
+      errorMessage.textContent = "";
 
-    const fd = new FormData(form);
-    const payload = Object.fromEntries(fd.entries());
+      const fd = new FormData(form);
+      const payload = Object.fromEntries(fd.entries());
 
-    try {
-      const res = await fetch("/.netlify/functions/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+      try {
+        const res = await fetch("/.netlify/functions/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
 
-      const text = await res.text();
+        const text = await res.text();
 
-      loading.style.display = "none";
+        loading.style.display = "none";
 
-      if (res.ok && text.trim() === "OK") {
-        sentMessage.style.display = "block";
-        form.reset();
-      } else {
+        if (res.ok && text.trim() === "OK") {
+          sentMessage.style.display = "block";
+          form.reset();
+        } else {
+          errorMessage.style.display = "block";
+          errorMessage.textContent = text || "Erreur. Réessayez.";
+        }
+      } catch (err) {
+        loading.style.display = "none";
         errorMessage.style.display = "block";
-        errorMessage.textContent = text || "Erreur. Réessayez.";
+        errorMessage.textContent =
+          "Impossible d'envoyer. Vérifiez votre connexion.";
       }
-    } catch (err) {
-      loading.style.display = "none";
-      errorMessage.style.display = "block";
-      errorMessage.textContent = "Impossible d'envoyer. Vérifiez votre connexion.";
-    }
-  });
-</script>
+    });
+  </script>
   <body class="index-page">
     <header id="header" class="header d-flex align-items-center sticky-top">
       <div
@@ -107,7 +108,7 @@
             <li><a href="#about">À propos</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#portfolio">Réalisations</a></li>
-            <li class="dropdown">
+            <!-- <li class="dropdown">
               <a href="#"
                 ><span>Dropdown</span>
                 <i class="bi bi-chevron-down toggle-dropdown"></i
@@ -131,7 +132,7 @@
                 <li><a href="#">Dropdown 3</a></li>
                 <li><a href="#">Dropdown 4</a></li>
               </ul>
-            </li>
+            </li> -->
             <li><a href="#contact">Contact</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -191,71 +192,37 @@
 
                 <div class="progress">
                   <span class="skill"
-                    ><span>HTML</span> <i class="val">100%</i></span
+                    ><span>Front-end</span> <i class="val">80%</i></span
                   >
                   <div class="progress-bar-wrap">
                     <div
                       class="progress-bar"
                       role="progressbar"
-                      aria-valuenow="100"
+                      aria-valuenow="80"
                       aria-valuemin="0"
-                      aria-valuemax="100"
+                      aria-valuemax="85"
                     ></div>
                   </div>
                 </div>
-                <!-- End Skills Item -->
 
                 <div class="progress">
                   <span class="skill"
-                    ><span>CSS</span> <i class="val">90%</i></span
+                    ><span>Back-end</span> <i class="val">40%</i></span
                   >
                   <div class="progress-bar-wrap">
                     <div
                       class="progress-bar"
                       role="progressbar"
-                      aria-valuenow="90"
+                      aria-valuenow="40"
                       aria-valuemin="0"
                       aria-valuemax="100"
                     ></div>
                   </div>
                 </div>
-                <!-- End Skills Item -->
 
                 <div class="progress">
                   <span class="skill"
-                    ><span>JavaScript</span> <i class="val">75%</i></span
-                  >
-                  <div class="progress-bar-wrap">
-                    <div
-                      class="progress-bar"
-                      role="progressbar"
-                      aria-valuenow="75"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                    ></div>
-                  </div>
-                </div>
-                <!-- End Skills Item -->
-
-                <div class="progress">
-                  <span class="skill"
-                    ><span>Git / GitHub</span> <i class="val">65%</i></span
-                  >
-                  <div class="progress-bar-wrap">
-                    <div
-                      class="progress-bar"
-                      role="progressbar"
-                      aria-valuenow="65"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                    ></div>
-                  </div>
-                </div>
-                <!-- End Skills Item -->
-
-                <div class="progress">
-                  <span class="skill"
-                    ><span>Responsive Design</span> <i class="val">85%</i></span
+                    ><span>IA Engineer</span> <i class="val">85%</i></span
                   >
                   <div class="progress-bar-wrap">
                     <div
@@ -267,23 +234,6 @@
                     ></div>
                   </div>
                 </div>
-                <!-- End Skills Item -->
-
-                <div class="progress">
-                  <span class="skill"
-                    ><span>SEO de base</span> <i class="val">80%</i></span
-                  >
-                  <div class="progress-bar-wrap">
-                    <div
-                      class="progress-bar"
-                      role="progressbar"
-                      aria-valuenow="80"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                    ></div>
-                  </div>
-                </div>
-                <!-- End Skills Item -->
               </div>
             </div>
 
@@ -291,35 +241,25 @@
               <div class="about-me">
                 <h4>À propos de moi</h4>
                 <p>
-                  Je suis Développeur Frontend Web et Freelance, spécialisé dans
-                  la création de sites web professionnels pour entreprises,
-                  établissements scolaires, organisations et projets de toute
-                  taille. Fort de ma formation en Management et Stratégie
-                  Digitale et actuellement en Master en Intelligence
-                  Artificielle et Intelligence Économique, je combine
-                  compétences techniques et sens stratégique pour concevoir des
-                  sites modernes, efficaces et faciles à utiliser.
+                  Je suis Développeur Frontend Web Freelance, spécialisé dans la
+                  création de sites web professionnels et d’expériences
+                  digitales sur mesure. Grâce à ma formation en Management,
+                  Stratégie Digitale et mon Master en Intelligence Artificielle
+                  et Intelligence Économique en cours, j’allie compétences
+                  techniques et vision stratégique pour accompagner mes clients
+                  dans leur transformation digitale.
                 </p>
                 <p>
-                  Mon objectif est d’aider les clients à renforcer leur
-                  visibilité en ligne, améliorer leur communication et offrir
-                  une expérience digitale intuitive à leurs utilisateurs.
+                  Pour offrir des solutions complètes et innovantes, je
+                  collabore avec un réseau de partenaires experts. Ensemble,
+                  nous unissons nos expertises pour répondre à tous les besoins
+                  de votre projet : développement, design, stratégie et
+                  communication digitale.
                 </p>
                 <p>
-                  Je maîtrise la création d’interfaces modernes et responsives,
-                  ainsi que l’optimisation de la présence digitale de mes
-                  clients grâce à une approche structurée et orientée résultats.
-                  Chaque projet que je réalise est pensé pour répondre aux
-                  besoins réels de mes clients tout en respectant les standards
-                  du web.
-                </p>
-                <p>
-                  Je maîtrise la création d’interfaces modernes et responsives,
-                  ainsi que l’optimisation de la présence digitale de mes
-                  clients grâce à une approche structurée et orientée résultats.
-                  Chaque projet que je réalise est pensé pour répondre aux
-                  besoins réels de mes clients tout en respectant les standards
-                  du web.
+                  Notre objectif : vous aider à renforcer votre présence en
+                  ligne, optimiser votre communication et offrir à vos
+                  utilisateurs une expérience digitale intuitive et efficace.
                 </p>
               </div>
             </div>
@@ -346,24 +286,24 @@
                 <h4>Ndako Yannick</h4>
                 <p>
                   <em>
-                    Développeur Frontend Web et Freelance, orienté résultats et
-                    solutions digitales. Titulaire d’une Licence en Management
-                    et Stratégie Digitale obtenue à Pigier et actuellement en
-                    Master en Intelligence Artificielle et Intelligence
-                    Économique, je conçois et développe des sites web modernes
-                    et responsives pour entreprises, écoles et projets de toute
-                    taille, en alliant technique, stratégie digitale et
-                    expérience utilisateur. Je suis passionné par la création
-                    d’interfaces efficaces, intuitives et esthétiques, et je
-                    m’engage à livrer des solutions personnalisées, fiables et
-                    professionnelles, du concept initial jusqu’à la mise en
-                    ligne.
+                    Développeur Frontend Web Freelance, orienté résultats, je
+                    transforme des besoins métier et des maquettes en interfaces
+                    web claires, rapides et adaptées à tous les supports.
+                    Titulaire d’une Licence en Management et Stratégie Digitale
+                    (Pigier) et actuellement en Master en Intelligence
+                    Artificielle et Intelligence Économique, je dispose d’un
+                    profil hybride qui me permet de comprendre les enjeux
+                    business tout en proposant des solutions techniques
+                    pertinentes. Je privilégie un code propre et structuré, une
+                    navigation fluide et une mise en page soignée afin de livrer
+                    des sites faciles à utiliser, à maintenir et à faire
+                    évoluer.
                   </em>
                 </p>
                 <ul>
-                  <li>Localisation : Maroua, Cameroun</li>
+                  <li>Localisation : Cameroun</li>
                   <li>Téléphone : (+237) 690 973 861</li>
-                  <li>Email : ndakoyannick@example.com</li>
+                  <li>Email : yannickndako@gmail.com</li>
                 </ul>
               </div>
               <!-- Edn Resume Item -->
@@ -372,7 +312,6 @@
               <div class="resume-item">
                 <h4>
                   Master en Intelligence Artificielle et Intelligence Économique
-                  – Pigier, Cameroun
                 </h4>
                 <h5>2025 - en cours</h5>
                 <p>
@@ -388,9 +327,7 @@
               <!-- Edn Resume Item -->
 
               <div class="resume-item">
-                <h4>
-                  Licence en Management et Stratégie Digitale – Pigier, Maroua
-                </h4>
+                <h4>Licence en Management et Stratégie Digitale</h4>
                 <h5>2022 - 2025</h5>
                 <p>
                   <em
@@ -403,19 +340,6 @@
               </div>
               <!-- Edn Resume Item -->
 
-              <div class="resume-item">
-                <h4>Baccalauréat D – Collège Baba Simon, Tokombéré</h4>
-                <h5>2022</h5>
-                <p>
-                  <em
-                    >J’ai obtenu mon Baccalauréat D au Collège Baba Simon de
-                    Tokombéré, avec une solide base en sciences et en
-                    mathématiques, ce qui m’a permis de développer des
-                    compétences analytiques essentielles pour mon parcours en
-                    développement web et stratégie digitale.</em
-                  >
-                </p>
-              </div>
               <!-- Edn Resume Item -->
             </div>
 
@@ -1579,131 +1503,167 @@
       <!-- Contact Section -->
       <section id="contact" class="contact section">
         <!-- Section Title -->
-       <div class="container section-title" data-aos="fade-up">
-  <h2>Contact</h2>
-  <p>
-    Vous avez un projet (site vitrine, landing page, application web, branding) ?
-    Contactez-nous et nous vous répondrons rapidement avec une estimation et les prochaines étapes.
-  </p>
-</div>
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Contact</h2>
+          <p>
+            Vous avez un projet (site vitrine, landing page, application web,
+            branding) ? Contactez-nous et nous vous répondrons rapidement avec
+            une estimation et les prochaines étapes.
+          </p>
+        </div>
 
-<div class="container" data-aos="fade-up" data-aos-delay="100">
-  <div class="info-wrap" data-aos="fade-up" data-aos-delay="200">
-    <div class="row gy-5">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+          <div class="info-wrap" data-aos="fade-up" data-aos-delay="200">
+            <div class="row gy-5">
+              <div class="col-lg-4">
+                <div class="info-item d-flex align-items-center">
+                  <i class="bi bi-geo-alt flex-shrink-0"></i>
+                  <div>
+                    <h3>Localisation</h3>
+                    <p>Cameroun</p>
+                  </div>
+                </div>
+              </div>
 
-      <div class="col-lg-4">
-        <div class="info-item d-flex align-items-center">
-          <i class="bi bi-geo-alt flex-shrink-0"></i>
-          <div>
-            <h3>Localisation</h3>
-            <p>Cameroun</p>
+              <div class="col-lg-4">
+                <div class="info-item d-flex align-items-center">
+                  <i class="bi bi-telephone flex-shrink-0"></i>
+                  <div>
+                    <h3>Téléphone / WhatsApp</h3>
+                    <p>
+                      <a href="tel:+237690973861">+237 690 973 861</a><br />
+                      <a
+                        href="https://wa.me/237690973861"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        Écrire sur WhatsApp
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4">
+                <div class="info-item d-flex align-items-center">
+                  <i class="bi bi-envelope flex-shrink-0"></i>
+                  <div>
+                    <h3>Email</h3>
+                    <p>
+                      <a href="mailto:contact@veloxwebstudio.com"
+                        >contact@ndakoyannick.com</a
+                      ><br />
+                      <small class="text-muted">
+                        Alternative :
+                        <a href="mailto:yannickndako@gmail.com"
+                          >yannickndako@gmail.com</a
+                        >
+                      </small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-lg-4">
-        <div class="info-item d-flex align-items-center">
-          <i class="bi bi-telephone flex-shrink-0"></i>
-          <div>
-            <h3>Téléphone / WhatsApp</h3>
-            <p>
-              <a href="tel:+237690973861">+237 690 973 861</a><br />
-              <a href="https://wa.me/237690973861" target="_blank" rel="noopener">
-                Écrire sur WhatsApp
-              </a>
-            </p>
+        <form id="contact-form" data-aos="fade-up" data-aos-delay="300">
+          <div class="row gy-4">
+            <div class="col-md-6">
+              <input
+                type="text"
+                name="name"
+                class="form-control"
+                placeholder="Votre nom"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <input
+                type="email"
+                name="email"
+                class="form-control"
+                placeholder="Votre email"
+                required
+              />
+            </div>
+
+            <!-- Anti-spam (doit rester vide) -->
+            <div style="display: none">
+              <input
+                type="text"
+                name="website"
+                value=""
+                autocomplete="off"
+                tabindex="-1"
+              />
+            </div>
+
+            <div class="col-md-12">
+              <input
+                type="text"
+                name="subject"
+                class="form-control"
+                placeholder="Objet"
+                required
+              />
+            </div>
+
+            <div class="col-md-12">
+              <textarea
+                name="message"
+                class="form-control"
+                rows="6"
+                placeholder="Votre message"
+                required
+              ></textarea>
+            </div>
+
+            <div class="col-md-12 text-center">
+              <div class="loading" style="display: none">Envoi...</div>
+              <div class="error-message" style="display: none"></div>
+              <div class="sent-message" style="display: none">
+                Message envoyé. Merci !
+              </div>
+
+              <button type="submit">Envoyer</button>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="info-item d-flex align-items-center">
-          <i class="bi bi-envelope flex-shrink-0"></i>
-          <div>
-            <h3>Email</h3>
-            <p>
-              <a href="mailto:contact@veloxwebstudio.com">contact@ndakoyannick.com</a><br />
-              <small class="text-muted">
-                Alternative : <a href="mailto:yannickndako@gmail.com">yannickndako@gmail.com</a>
-              </small>
-            </p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-         <form id="contact-form" data-aos="fade-up" data-aos-delay="300">
-  <div class="row gy-4">
-    <div class="col-md-6">
-      <input type="text" name="name" class="form-control" placeholder="Votre nom" required />
-    </div>
-
-    <div class="col-md-6">
-      <input type="email" name="email" class="form-control" placeholder="Votre email" required />
-    </div>
-
-    <!-- Anti-spam (doit rester vide) -->
-    <div style="display:none;">
-      <input type="text" name="website" value="" autocomplete="off" tabindex="-1" />
-    </div>
-
-    <div class="col-md-12">
-      <input type="text" name="subject" class="form-control" placeholder="Objet" required />
-    </div>
-
-    <div class="col-md-12">
-      <textarea name="message" class="form-control" rows="6" placeholder="Votre message" required></textarea>
-    </div>
-
-    <div class="col-md-12 text-center">
-      <div class="loading" style="display:none;">Envoi...</div>
-      <div class="error-message" style="display:none;"></div>
-      <div class="sent-message" style="display:none;">Message envoyé. Merci !</div>
-
-      <button type="submit">Envoyer</button>
-    </div>
-  </div>
-</form>
-          <!-- End Contact Form -->
-        </div>
+        </form>
+        <!-- End Contact Form -->
       </section>
       <!-- /Contact Section -->
     </main>
 
     <footer id="footer" class="footer accent-background">
-  <div class="container">
+      <div class="container">
+        <div class="copyright text-center">
+          <p class="mb-1">
+            © <span id="year"></span>
 
-    <div class="copyright text-center">
-      <p class="mb-1">
-        © <span id="year"></span>
-        <strong class="px-1 sitename">Web Studio</strong>
-        <span>— Tous droits réservés</span>
-      </p>
-      <p class="mb-0" style="font-size: 0.95rem;">
-        Ndako Yannick Détéri (Développeur Front‑end) • Songué Jourdain <span class="text-muted">(VeloxMaker)</span> (Graphiste)
-      </p>
-    </div>
+            <span>— Tous droits réservés</span>
+          </p>
+          <p class="mb-0" style="font-size: 0.95rem">
+            Ndako Yannick Détéri (Développeur Front‑end) • Songué Jourdain
+            <span class="text-muted">(VeloxMaker)</span> (Graphiste)
+          </p>
+        </div>
 
-    <div class="social-links d-flex justify-content-center mt-3">
-      <!-- Remplace les href par tes liens -->
-      <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-      <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-      <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
-      <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-      <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-    </div>
+        <div class="social-links d-flex justify-content-center mt-3">
+          <!-- Remplace les href par tes liens -->
+          <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        </div>
+      </div>
 
-    
-
-  </div>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-</footer>
+      <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+      </script>
+    </footer>
 
     <!-- Scroll Top -->
     <a
