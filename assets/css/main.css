@@ -439,13 +439,46 @@ h6 {
     inset: 0;
     background: rgba(33, 37, 41, 0.8);
     transition: 0.3s;
+    height: 350px;
   }
 
   .mobile-nav-active .navmenu > ul {
     display: block;
   }
 }
+@media (max-width: 991px) and (min-width: 768px) {
+  .col-lg-5 img {
+    border-radius: 20px; /* un peu plus rond, mais pas encore cercle */
+  }
+}
 
+/* Sur mobile (≤ 767px) → devient rond */
+@media (max-width: 767px) {
+  .col-lg-5 img {
+    border-radius: 50%; /* cercle parfait */
+    aspect-ratio: 1 / 1; /* force un format carré (très utile) */
+    width: 80%; /* ou 220px, 18rem, etc. selon ton design */
+    max-width: 240px; /* limite la taille pour ne pas être trop gros */
+    margin: 0 auto; /* centre l'image */
+    object-fit: cover; /* croppe au centre si l'image n'est pas carrée */
+    display: flex;
+    justify-content: center;
+  }
+}
+/* Sur mobile → on cache */
+@media (max-width: 767.98px) {
+  /* ou max-width: 575.98px si tu utilises Bootstrap 5 sm breakpoint */
+  .stats section accent-background {
+    display: none !important;
+  }
+}
+/* Sur mobile → on cache */
+@media (max-width: 767.98px) {
+  /* ou max-width: 575.98px si tu utilises Bootstrap 5 sm breakpoint */
+  .container.position-relative.aos-init.aos-animate {
+    display: none !important;
+  }
+}
 /*--------------------------------------------------------------
 # Global Footer
 --------------------------------------------------------------*/
