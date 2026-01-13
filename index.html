@@ -3,12 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Ndako Yannick</title>
-    <meta name="description" content="" />
+    <title>
+      Yannick Ndako | Développeur Web JAMstack & Stratège (React / PWA)
+    </title>
+    <meta
+      name="description"
+      content="Expert en sites web haute performance (Jekyll, React) et stratégie digitale. Je conçois des PWAs ultra-rapides, sécurisées et optimisées pour le SEO et la conversion.
+
+"
+    />
     <meta name="keywords" content="" />
 
     <!-- Favicons -->
-    <!-- <link href="assets/img/favicon.png " rel="icon" /> -->
+    <link href="assets/img/favcon1.png" rel="icon" />
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
     <!-- Fonts -->
@@ -45,6 +52,12 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+    <!-- Ajouter dans le <head> -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <script>
+      emailjs.init("SiyX2k7r8ZAoFySVP"); // Remplacez par votre clé
+    </script>
   </head>
   <script>
     const form = document.getElementById("contact-form");
@@ -89,6 +102,7 @@
       }
     });
   </script>
+  <script src="assets/js/contact.js"></script>
   <body class="index-page">
     <header id="header" class="header d-flex align-items-center sticky-top">
       <div
@@ -143,7 +157,7 @@
     <main class="main">
       <!-- Hero Section -->
       <section id="hero" class="hero section dark-background">
-        <img src="assets/img/hero-img.jpg" alt="" data-aos="fade-in" />
+        <img src="assets/img/img-hero.png" alt="" data-aos="fade-in" />
 
         <div
           class="container d-flex flex-column align-items-center justify-content-center text-center"
@@ -168,7 +182,11 @@
             <div class="col-md-6">
               <div class="row justify-content-between gy-4">
                 <div class="col-lg-5">
-                  <img src="assets/img/IMG_4373.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="assets/img/testimonials/img-ndako.webp"
+                    class="img-fluid"
+                    alt=""
+                  />
                 </div>
                 <div class="col-lg-7 about-info">
                   <p>
@@ -355,10 +373,7 @@
                     responsives pour entreprises, écoles et projets de toute
                     taille.
                   </li>
-                  <li>
-                    Mise en œuvre de solutions digitales efficaces, intégrant
-                    HTML, CSS, JavaScript.
-                  </li>
+                  <li>Mise en œuvre de solutions digitales efficaces.</li>
                   <li>
                     Gestion complète des projets, du concept initial à la mise
                     en ligne, avec un suivi personnalisé des besoins clients.
@@ -1385,9 +1400,9 @@
         <div class="container section-title" data-aos="fade-up">
           <h2>Notre équipe</h2>
           <p>
-            Une petite équipe, deux compétences complémentaires : développement
-            front-end et design graphique. Objectif : livrer des sites et
-            interfaces modernes, rapides et cohérentes avec votre image.
+            Une synergie de compétences pour propulser votre présence en ligne.
+            Notre mission : livrer des solutions digitales robustes, esthétiques
+            et cohérentes avec votre vision.
           </p>
         </div>
         <!-- End Section Title -->
@@ -1413,7 +1428,7 @@
               <div class="swiper-slide">
                 <div class="testimonial-item">
                   <img
-                    src="assets/img/testimonials/img-ndako.webp"
+                    src="assets/img/IMG_4373.jpg"
                     class="testimonial-img"
                     alt="Ndako Yannick Détéri"
                   />
@@ -1441,7 +1456,7 @@
               <!-- End item -->
 
               <!-- Songué Jourdain / VeloxMaker -->
-              <div class="swiper-slide">
+              <!-- <div class="swiper-slide">
                 <div class="testimonial-item">
                   <img
                     src="assets/img/team/jourdain-veloxmaker.jpg"
@@ -1465,14 +1480,14 @@
                     <i class="bi bi-quote quote-icon-right"></i>
                   </p>
                 </div>
-              </div>
+              </div> -->
               <!-- End item -->
 
               <!-- Optionnel : slide "collaboration" -->
               <div class="swiper-slide">
                 <div class="testimonial-item">
                   <img
-                    src="assets/img/team/collaboration.jpg"
+                    src="assets/img/testimonials/imgCollab.png"
                     class="testimonial-img"
                     alt="Collaboration"
                   />
@@ -1645,18 +1660,46 @@
             <span>— Tous droits réservés</span>
           </p>
           <p class="mb-0" style="font-size: 0.95rem">
-            Ndako Yannick Détéri (Développeur Front‑end) • Songué Jourdain
-            <span class="text-muted">(VeloxMaker)</span> (Graphiste)
+            Ndako Yannick Détéri (Développeur Front‑end)
           </p>
         </div>
 
         <div class="social-links d-flex justify-content-center mt-3">
-          <!-- Remplace les href par tes liens -->
-          <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-          <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
-          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a
+            href="https://wa.me/690973861"
+            aria-label="WhatsApp"
+            target="_blank"
+          >
+            <i class="bi bi-whatsapp"></i>
+          </a>
+          <a
+            href="https://linkedin.com/in/ndako-yannick"
+            aria-label="LinkedIn"
+            target="_blank"
+          >
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a
+            href="https://github.com/codesage25"
+            aria-label="GitHub"
+            target="_blank"
+          >
+            <i class="bi bi-github"></i>
+          </a>
+          <a
+            href="https://instagram.com/ndako.yannick"
+            aria-label="Instagram"
+            target="_blank"
+          >
+            <i class="bi bi-instagram"></i>
+          </a>
+          <a
+            href="https://facebook.com/Deteri Ndako Yannick"
+            aria-label="Facebook"
+            target="_blank"
+          >
+            <i class="bi bi-facebook"></i>
+          </a>
         </div>
       </div>
 
